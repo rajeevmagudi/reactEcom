@@ -1,0 +1,15 @@
+.firstHeader{
+  text-align: center;
+  color: darkolivegreen;
+  font-size: 3em;
+}
+.firstPara{
+  font-size: 35px;
+  color: cadetblue;
+}
+.p-container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
