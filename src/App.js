@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import './App.css';
 import Products from './components/products/products';
 import CreateProducts from './components/createProduct/createProducts';
+import FilterProducts from './components/filter/filterProducts';
 
 function App() {
   
@@ -49,15 +50,29 @@ const products  = [
     qnty:0
   }
 ];
-  let [newProduct,addnewProduct]=useState(null);
+  let [newProduct,addnewProduct]=useState(products);
+  let [filterdText,updateFilteredText] = useState("all");
+  let filteredProduct = newProduct.filter((product)=>{
+    if(filterdText === "Available"){
+      return product.qnty > 0;
+    }else if(filterdText === "Unavailable"){
+      return product.qnty <= 0;
+    }else{
+      return product;
+    }
+  })
 
   function createProduct(product){
-    addnewProduct(product);
+    addnewProduct([product,...newProduct]);
+  }
+  function filterdProductValue(filterValue){
+    updateFilteredText(filterValue);
   }
   return (
-    <div>
+    <div className='container'>
       <CreateProducts createNewProduct={createProduct}></CreateProducts>
-      <Products newProduct={newProduct}></Products>
+      <FilterProducts filterdProduct={filterdProductValue}></FilterProducts>
+      <Products newProduct={filteredProduct}></Products>
      </div>
   )
 }

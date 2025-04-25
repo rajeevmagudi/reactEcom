@@ -4,6 +4,7 @@ import Product from "./Product";
 
 function Products(props){
   console.log(props.newProduct);
+  let products = props.newProduct;
       return (
         <div>
             <h1 className='firstHeader'>This is My first react project</h1>
