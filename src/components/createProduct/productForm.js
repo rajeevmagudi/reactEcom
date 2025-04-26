@@ -43,6 +43,7 @@ function ProductForm(props){
         updatedPPrice('');
         updatedPQnty('');
         props.createProduct(product);
+        props.clearProductForm();
     }
     return (<div>
         <form className="row g-3" onSubmit={submitForm}>
@@ -81,8 +82,8 @@ function ProductForm(props){
             <input type="file" value={pImage} className="form-control" id="select-image" onChange={fileChnaged} />
         </div>
         
-
         <button type="submit" className="btn btn-primary">Add Product</button>
+        <button className="btn btn-warning" type="button" onClick={props.clearProductForm}>Cancel</button>
     </form>
     </div>)
 }
